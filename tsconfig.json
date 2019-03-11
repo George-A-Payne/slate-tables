@@ -1,0 +1,27 @@
+{
+    "files": [
+        "./lib/index.ts"
+    ],
+    "compilerOptions": {
+        "jsx": "react",
+        "lib": ["dom", "es2017", "dom.iterable"],
+        "module": "esnext",
+        "sourceMap": true,
+        "target": "es5",
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node",
+        "noUnusedLocals": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "resolveJsonModule": true,
+        "noEmit": true,
+        "strict": true,
+        "baseUrl": "./lib"
+    },
+    "include": [
+        "./lib/**/*"
+    ],
+    "exclude": [
+        "**/node_modules/**/*"
+    ]
+}

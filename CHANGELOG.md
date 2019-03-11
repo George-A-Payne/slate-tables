@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.8.0] - 2018-04-12
+
+- initial working fork of prior project (slate-deep-table)
+
 ## [0.8.0] - 2018-11-2
 
   - compatibility with slate 0.43.x (thanks @eugene-preply )
@@ -25,5 +29,5 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - many updates to usage as a result; see the slate changelog, the updated README, and the example
 
 ## [0.5.1] - 2017-08-16
-  
-  - initial working fork of prior project
+
+  - initial working fork of prior project (slate-edit-table)
