@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
     presets: [
         require.resolve('@babel/preset-react'),
@@ -25,11 +23,12 @@ module.exports = {
             {
                 root: ['./'],
                 alias: {
-                    'changes': './lib/changes',
-                    'create': './lib/create',
-                    'hooks': './lib/hooks',
-                    'types': './lib/types',
-                    'utils': './lib/utils',
+                    changes: './lib/changes',
+                    create: './lib/create',
+                    hooks: './lib/hooks',
+                    schema: './lib/schema',
+                    types: './lib/types',
+                    utils: './lib/utils',
                 },
             },
         ]

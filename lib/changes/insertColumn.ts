@@ -1,6 +1,6 @@
 import { Editor } from 'slate';
 
-import { TablePosition } from 'utils';
+import { TablePosition, updateTableMeta } from 'utils';
 import { moveTableSelection } from 'changes';
 import { createCell } from 'create';
 import { Options } from 'types';
@@ -15,6 +15,8 @@ const insertColumn = (options: Options, editor: Editor, at?: number) => {
             const newCell = createCell(options, index);
             editor.insertNodeByKey(row!.key, index, newCell);
         });
+
+        updateTableMeta(options, editor);
     });
 
     // Update the selection (not doing can break the undo)

@@ -6,7 +6,7 @@
   "repository": "git://github.com/George-A-Payne/slate-tables.git",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "babel lib --out-dir ./dist --extensions \".ts, .tsx\"",
+    "build": "babel lib --out-dir ./dist --extensions \".tsx,.ts\"",
     "start": "catalog start --babelrc=false"
   },
   "peerDependencies": {
@@ -33,6 +33,9 @@
     "immutable": "3.8.1",
     "react": "16.3.0",
     "react-dom": "16.3.0",
+    "slate": "0.44.12",
+    "slate-html-serializer": "0.7.36",
+    "slate-react": "0.21.18",
     "tslint": "5.12.1",
     "tslint-react": "3.6.0",
     "typescript": "3.3.3333"

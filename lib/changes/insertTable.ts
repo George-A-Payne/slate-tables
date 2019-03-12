@@ -8,9 +8,13 @@ const insertTable = (options: Options, editor: Editor, columns: number = 2, rows
     if (!value.selection.start.key) return false;
 
     const table = createTable(options, columns, rows);
+    const currentBlock = editor.value.startBlock;
 
-    return editor
-        .insertBlock(table);
+    if (!currentBlock.text.length) {
+        return editor.replaceNodeByKey(currentBlock.key, table);
+    }
+
+    return editor.insertBlock(table);
 };
 
 export default insertTable;

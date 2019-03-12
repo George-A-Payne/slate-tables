@@ -15,6 +15,7 @@ function createRow(options: Options, columns: number, index: number, textGetter:
         type:  options.typeRow,
         nodes: cellNodes,
         data: {
+            cells: columns,
             index,
         },
     } as BlockProperties);

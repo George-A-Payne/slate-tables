@@ -1,7 +1,7 @@
 import { Editor, Block } from 'slate';
 
 import { Options } from 'types';
-import { TablePosition } from 'utils';
+import { TablePosition, updateTableMeta } from 'utils';
 import { removeTable } from 'changes';
 
 const removeColumn = (options: Options, editor: Editor, at?: number) => {
@@ -19,6 +19,8 @@ const removeColumn = (options: Options, editor: Editor, at?: number) => {
             const cell = (row as Block).nodes.get(index);
             editor.removeNodeByKey(cell.key);
         });
+
+        updateTableMeta(options, editor);
     });
 
     return editor;

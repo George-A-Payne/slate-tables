@@ -1,7 +1,7 @@
 import { Editor } from 'slate';
 
 import { Options } from 'types';
-import { TablePosition } from 'utils';
+import { TablePosition, updateTableMeta } from 'utils';
 import { removeTable } from 'changes';
 
 const removeRow = (options: Options, editor: Editor, at?: number) => {
@@ -14,7 +14,12 @@ const removeRow = (options: Options, editor: Editor, at?: number) => {
 
     // Update table by removing the row
     const row = position.getRow(at);
-    editor.removeNodeByKey(row.key);
+
+    editor.withoutNormalizing(() => {
+        editor.removeNodeByKey(row.key);
+        updateTableMeta(options, editor);
+    });
+
     return editor;
 };
 

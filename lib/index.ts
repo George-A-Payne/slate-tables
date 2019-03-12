@@ -1,7 +1,8 @@
 import { Plugin } from 'slate-react';
 
 import { Options } from 'types';
-import { isSelectionInTable, withEditor, defaultRenderers, makeSchema } from 'utils';
+import { isSelectionInTable, withEditor, defaultRenderers } from 'utils';
+import { normalizeNode, schema } from 'schema';
 import { onKeyDown } from 'hooks';
 import {
     insertTable,
@@ -24,13 +25,11 @@ const EditTable = (opts: Partial<Options> = {}): Plugin => {
         ...opts,
     };
 
-    const { schema, normalizeNode } = makeSchema(options);
-
     return {
         onKeyDown: onKeyDown(options),
 
-        schema,
-        normalizeNode,
+        schema: schema(options),
+        normalizeNode: normalizeNode(options),
         renderNode: defaultRenderers(options),
 
         queries: {
