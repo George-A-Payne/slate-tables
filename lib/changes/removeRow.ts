@@ -1,4 +1,4 @@
-import { Editor } from 'slate';
+import { Editor, Block } from 'slate';
 
 import { Options } from 'types';
 import { TablePosition, updateTableMeta } from 'utils';
@@ -12,11 +12,19 @@ const removeRow = (options: Options, editor: Editor, at?: number) => {
         return removeTable(options, editor);
     }
 
+    const index = at != null ? at : position.getRowIndex();
+    const cellIndex = position.getColumnIndex();
+
     // Update table by removing the row
-    const row = position.getRow(at);
+    const row = position.getRow(index);
+    const nextFocusRow = position.getRow(index === 0 ? 1 : index - 1);
+    const nextFocusCell = nextFocusRow.nodes.get(cellIndex) as Block;
 
     editor.withoutNormalizing(() => {
-        editor.removeNodeByKey(row.key);
+        editor
+            .removeNodeByKey(row.key)
+            .moveTo(nextFocusCell.getFirstText()!.key, 0);
+
         updateTableMeta(options, editor);
     });
 

@@ -11,10 +11,15 @@ const insertTable = (options: Options, editor: Editor, columns: number = 2, rows
     const currentBlock = editor.value.startBlock;
 
     if (!currentBlock.text.length) {
-        return editor.replaceNodeByKey(currentBlock.key, table);
+        editor.replaceNodeByKey(currentBlock.key, table);
+    } else {
+        editor.insertBlock(table);
     }
 
-    return editor.insertBlock(table);
+    // focus first cell of new table
+    editor.moveTo(table.getFirstText()!.key, 0);
+
+    return editor;
 };
 
 export default insertTable;
