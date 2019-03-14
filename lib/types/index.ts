@@ -1,5 +1,4 @@
 import { Editor } from 'slate';
-import { Editor as Slate } from 'slate-react';
 
 export interface Options {
     typeTable: string;
@@ -9,7 +8,7 @@ export interface Options {
     typeDefault: string;
 }
 
-export interface TableEditor extends Slate {
+export interface TableEditor extends Editor {
     isSelectionInTable(): boolean;
     insertTable(columns?: number, rows?: number): TableEditor;
     insertRow(at?: number): TableEditor;

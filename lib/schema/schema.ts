@@ -1,5 +1,6 @@
 import { SchemaProperties, Block, Node } from 'slate';
 import { Options } from 'types';
+import { updateTableMeta } from 'utils';
 
 const SchemaViolations = {
     ChildRequired: 'child_required',
@@ -23,26 +24,29 @@ const schema = (options: Options): SchemaProperties => ({
                 // enforce cells must contain blocks, insert or wrap if not
                 switch (error.code) {
                     case SchemaViolations.ChildRequired: {
-                        return editor.insertNodeByKey(
+                        editor.insertNodeByKey(
                             error.node.key,
                             error.index,
                             Block.create(options.typeContent),
                         );
+                        return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ChildObjectInvalid: {
-                        return editor.replaceNodeByKey(
+                        editor.replaceNodeByKey(
                             error.child.key,
                             Block.create({
                                 type: options.typeContent,
                                 nodes: error.node.mapDescendants((n: Node) => n.regenerateKey()).nodes,
                             }),
                         );
+                        return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ParentTypeInvalid: {
-                        return editor.wrapBlockByKey(
+                        editor.wrapBlockByKey(
                             error.node.key,
                             options.typeRow,
                         );
+                        return updateTableMeta(options, editor, error.node);
                     }
                 }
             },
@@ -60,24 +64,27 @@ const schema = (options: Options): SchemaProperties => ({
                 // enforce rows must contain cells, drop all else
                 switch (error.code) {
                     case SchemaViolations.ChildRequired: {
-                        return editor.insertNodeByKey(
+                        editor.insertNodeByKey(
                             error.node.key,
                             error.index,
                             Block.create(options.typeCell),
                         );
+                        return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ChildTypeInvalid:
                     case SchemaViolations.ChildObjectInvalid: {
-                        return editor.replaceNodeByKey(
+                        editor.replaceNodeByKey(
                             error.child.key,
                             Block.create(options.typeCell),
                         );
+                        return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ParentTypeInvalid: {
-                        return editor.wrapBlockByKey(
+                        editor.wrapBlockByKey(
                             error.node.key,
                             options.typeTable,
                         );
+                        return updateTableMeta(options, editor, error.node);
                     }
                 }
             },
@@ -94,20 +101,23 @@ const schema = (options: Options): SchemaProperties => ({
                 // enforce rows must contain cells, drop all else
                 switch (error.code) {
                     case SchemaViolations.ChildRequired: {
-                        return editor.insertNodeByKey(
+                        editor.insertNodeByKey(
                             error.node.key,
                             error.index,
                             Block.create(options.typeRow),
                         );
+                        return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ChildObjectInvalid: {
-                        return editor.replaceNodeByKey(
+                        editor.replaceNodeByKey(
                             error.child.key,
                             Block.create(options.typeRow),
                         );
+                        return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ChildTypeInvalid: {
-                        return editor.removeNodeByKey(error.child.key);
+                        editor.removeNodeByKey(error.child.key);
+                        return updateTableMeta(options, editor, error.node);
                     }
                 }
             },

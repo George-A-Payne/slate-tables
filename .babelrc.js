@@ -29,6 +29,7 @@ module.exports = {
                     schema: './lib/schema',
                     types: './lib/types',
                     utils: './lib/utils',
+                    '@tests': './__tests__'
                 },
             },
         ]

@@ -1,3 +1,4 @@
+export { default as closestTable } from './closestTable';
 export { default as defaultRenderers } from './defaultRenderers';
 export { default as isSelectionInTable } from './isSelectionInTable';
 export { default as ofType } from './ofType';

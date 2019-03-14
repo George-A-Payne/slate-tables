@@ -16,10 +16,16 @@
         "resolveJsonModule": true,
         "noEmit": true,
         "strict": true,
-        "baseUrl": "./lib"
+        "baseUrl": "./lib",
+        "paths": {
+            "*": ["*", "/types/*"],
+            "@tests": ["../__tests__"],
+            "@tests/*": ["../__tests__/*"]
+        }
     },
     "include": [
-        "./lib/**/*"
+        "./lib/**/*",
+        "./__tests__/**/*"
     ],
     "exclude": [
         "**/node_modules/**/*"

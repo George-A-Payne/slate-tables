@@ -3,13 +3,20 @@ import { Range } from 'immutable';
 
 import { Options } from 'types';
 import { createRow } from 'create';
+import { updateTableMeta } from 'utils';
 
 const normalizeTable = (options: Options) => (table: Block, editor: Editor, next: () => Editor) => {
     const rows = table.data.get('rows');
+    const columns = table.data.get('columns');
 
     if (rows === table.nodes.size) return next();
 
-    const columns = table.data.get('columns');
+    // cannot have zero, cannot be null
+    if (!rows || !columns) {
+        updateTableMeta(options, editor, table);
+        return next();
+    }
+
     const presentRows = table.nodes.map((r) => (r as Block).data.get('index'));
 
     Range(0, rows).forEach((i) => {
