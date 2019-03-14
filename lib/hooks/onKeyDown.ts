@@ -6,9 +6,11 @@ import { isSelectionInTable } from 'utils';
 import onTab from './onTab';
 import onUpDown from './onUpDown';
 
-const KEY_TAB = 'Tab';
-const KEY_DOWN = 'ArrowUp';
-const KEY_UP = 'ArrowDown';
+export enum KEY {
+    TAB = 'Tab',
+    UP = 'ArrowUp',
+    DOWN = 'ArrowDown',
+}
 
 const onKeyDown = (options: Options) => (event: KeyboardEvent, editor: Editor, next: () => Editor): Editor => {
     if (!isSelectionInTable(options)(editor)) {
@@ -16,10 +18,10 @@ const onKeyDown = (options: Options) => (event: KeyboardEvent, editor: Editor, n
     }
 
     switch (event.key) {
-        case KEY_TAB:
+        case KEY.TAB:
             return onTab(event, editor, options);
-        case KEY_DOWN:
-        case KEY_UP:
+        case KEY.DOWN:
+        case KEY.UP:
             return onUpDown(event, editor, options);
     }
 

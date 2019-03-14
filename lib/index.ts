@@ -22,6 +22,7 @@ const EditTable = (opts: Partial<Options> = {}): Plugin => {
         typeRow: 'table_row',
         typeCell: 'table_cell',
         typeContent: 'paragraph',
+        typeDefault: 'paragraph',
         ...opts,
     };
 

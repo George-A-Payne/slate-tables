@@ -14,7 +14,7 @@ const removeTable = (options: Options, editor: Editor) => {
 
     if (!previous && !next) {
         const blank = Block.create({
-            type:  options.typeContent,
+            type:  options.typeDefault,
             nodes: List([
                 Text.create(''),
             ]),

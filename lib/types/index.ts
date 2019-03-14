@@ -6,6 +6,7 @@ export interface Options {
     typeRow: string;
     typeCell: string;
     typeContent: string;
+    typeDefault: string;
 }
 
 export interface TableEditor extends Slate {

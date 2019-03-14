@@ -23,6 +23,14 @@
     background-color: #EBEBEB;
 }
 
+.slate p:first-child {
+    margin-top: 0;
+}
+
+.slate p:last-child {
+    margin-bottom: 0;
+}
+
 .toolbar {
     padding: 8px;
     padding-bottom: 0;

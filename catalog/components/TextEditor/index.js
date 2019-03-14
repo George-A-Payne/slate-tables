@@ -107,7 +107,7 @@ class TextEditor extends Component {
         );
     }
 
-    onChange = ({ value }) => console.log(value.toJSON()) || this.setState({ value });
+    onChange = ({ value }) => this.setState({ value });
 
     onInsertTable = (e) => {
         e.preventDefault();
