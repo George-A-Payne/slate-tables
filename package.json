@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "repository": "git://github.com/George-A-Payne/slate-tables.git",
   "main": "./dist/index.js",
+  "types": "./index.d.ts",
   "scripts": {
     "build": "babel lib --out-dir ./dist --extensions \".tsx,.ts\" --ignore \"**/*.test.ts,**/*.test.tsx\"",
     "start": "catalog start --babelrc=false",
