@@ -9,6 +9,7 @@
   "scripts": {
     "build": "babel lib --out-dir ./dist --extensions \".tsx,.ts\" --ignore \"**/*.test.ts,**/*.test.tsx\"",
     "start": "catalog start --babelrc=false",
+    "build-catalog": "catalog build --babelrc=false",
     "test": "jest"
   },
   "jest": {

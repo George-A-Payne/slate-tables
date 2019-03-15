@@ -25,7 +25,8 @@
     },
     "include": [
         "./lib/**/*",
-        "./__tests__/**/*"
+        "./__tests__/**/*",
+        "./catalog/**/*"
     ],
     "exclude": [
         "**/node_modules/**/*"

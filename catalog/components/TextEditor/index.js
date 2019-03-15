@@ -21,13 +21,10 @@ const renderNode = (props, editor, next) => {
 };
 
 class TextEditor extends Component {
-    static defaultProps = {
-        initialValue: '',
-    }
 
     constructor (props) {
         super(props);
-        const value = serializer.deserialize(props.initialValue);
+        const value = props.initialValue ? props.initialValue : serializer.deserialize('');
         this.state = { value };
         this.editor = null;
     }

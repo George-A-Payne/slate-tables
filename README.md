@@ -1,16 +1,17 @@
-# slate-deep-table
+# slate-tables
 
-[![npm version](https://badge.fury.io/js/slate-deep-table.svg)](https://badge.fury.io/js/slate-deep-table)
+[![npm version](https://badge.fury.io/js/slate-tables.svg)](https://badge.fury.io/js/slate-tables)
 [![Linux Build Status](https://travis-ci.org/jasonphillips/slate-deep-table.png?branch=master)](https://travis-ci.org/jasonphillips/slate-deep-table)
 
-A Slate plugin to handle tables with nested block content. Forked from the excellent [slate-edit-table](https://github.com/GitbookIO/slate-edit-table) implementation, but retooled to work with deep content.
+A Slate plugin to handle tables.
+Forked from [slate-deep-tables](https://github.com/jasonphillips/slate-deep-table) that was forked from [slate-edit-table](https://github.com/GitbookIO/slate-edit-table).
 
-Demo: https://jasonphillips.github.io/slate-deep-table/
+Documentation and Demo: https://george-a-payne.github.io/slate-tables/
 
 ### Install
 
 ```
-npm install slate-deep-table
+npm install slate-tables
 ```
 
 ### Features
@@ -20,19 +21,21 @@ npm install slate-deep-table
 - Pressing <kbd>Shift+Tab</kbd>, move the select to previous cell
 - Permits nested block content within table cells
 - Optionally create headerless tables
+- Rows and Columns can only be removed by commands
+- Rows and Columns retain their order on seletion deletion
 
 ### Compatibility
 
 Slate is a fast-moving library, so check the CHANGELOG for information on the currently supported version.
 
-### Simple Usage
+### Usage
 
 ```js
-import DeepTable from 'slate-deep-table'
+import Tables from 'slate-tables';
 
 const plugins = [
-  DeepTable({ /* options object here; see below */ })
-]
+  Tables({ /* options object here; see below */ }),
+];
 
 // now instantiate your Slate Editor with these plugins, according to slate documentation
 ```
@@ -43,13 +46,15 @@ const plugins = [
 - `[typeRow: String]` — type for the rows `default: 'table_row'`
 - `[typeCell: String]` — type for the cells `default: 'table_cell'`
 - `[typeContent: String]` — type for the default blocks within cells `default: 'paragraph'`
+- `[typeDefault: String]` — type for the default blocks outside of cells, used to replace the table on deletion, if no other node is present, and for insertion  `default: 'paragraph'`
+
 
 ### Queries and Commands
 
-`slate-deep-table` exports queries and commands that you can invoke on your `editor` instance:
+`slate-tables` exports queries and commands that you can invoke on your `editor` instance:
 
 ```js
-// anywhere where 'editor' is passed as an argument, or using the react Component's ref, 
+// anywhere where 'editor' is passed as an argument, or using the react Component's ref,
 // you may directly invoke any of the exported functions below, e.g:
 const inATable = editor.isSelectionInTable();
 
@@ -58,7 +63,7 @@ if (!inATable) {
 }
 ```
 
-Check `example/main.js` for usage in a typical context. 
+Check [example](`/catalog/components/TextEditor/index.js`) for usage in a typical context.
 
 #### `query isSelectionInTable()`
 

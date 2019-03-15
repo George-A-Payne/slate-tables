@@ -3,31 +3,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.8.0] - 2018-04-12
+## [0.9.0] - 2019-03-15
+
+- Compatability with slate 0.44.x
+- Fixed error when deleting a table
+- Added tracking of cells position and tables expected size
+- Deleted cells and rows get replaced in correct place
+- Removing a table when it is the only node doesn't break editor
+- Cursor positioning:
+  - on insert table -> focus first cell
+  - on insert column -> focus adjecent cell in new column
+  - on insert row -> focus adjecent cell in new row
+  - on remove column -> focus adjecent cell in previous column, or next if on leading edge
+  - on remove row -> focus adjacent cell in previous row, or next if on leading edge
+- Cursor movement logic:
+  - Navigating nested tables
+  - insert node at top level if there is nowhere to go, to prevent table trapping.
+  - Add option for default node type
+- Add type declaration
+
+## [0.8.0] - 2019-03-12
 
 - initial working fork of prior project (slate-deep-table)
-
-## [0.8.0] - 2018-11-2
-
-  - compatibility with slate 0.43.x (thanks @eugene-preply )
-
-### Breaking
-  - Slate now hoists exported commands and queries to functions callable directly on the Editor instance. So instead of invoking e.g. `plugin.utils.insertTable()` you will now call it directly on your editor, eg. `editor.insertTable()`. See the tests for more examples.
-  - added `isSelectionInTable()` as an exported query
-  - renamed some commands for more specificity to ensure they don't collide with other plugins:
-    - `moveSelection()` -> `moveTableSelection()`
-    - `moveSelectionBy()` -> `moveTableSelectionBy()`
-    - `toggleHeaders()` -> `toggleTableHeaders()`
-
-## [0.7.0] - 2018-10-7
-
-  - compatibility with slate 0.41.x (thanks @marcjps)
-
-## [0.6.0] - 2017-01-24
-
-  - compatibility with slate 0.32.x
-  - many updates to usage as a result; see the slate changelog, the updated README, and the example
-
-## [0.5.1] - 2017-08-16
-
-  - initial working fork of prior project (slate-edit-table)
