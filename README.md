@@ -1,7 +1,6 @@
 # slate-tables
 
 [![npm version](https://badge.fury.io/js/slate-tables.svg)](https://badge.fury.io/js/slate-tables)
-[![Linux Build Status](https://travis-ci.org/jasonphillips/slate-deep-table.png?branch=master)](https://travis-ci.org/jasonphillips/slate-deep-table)
 
 A Slate plugin to handle tables.
 Forked from [slate-deep-tables](https://github.com/jasonphillips/slate-deep-table) that was forked from [slate-edit-table](https://github.com/GitbookIO/slate-edit-table).

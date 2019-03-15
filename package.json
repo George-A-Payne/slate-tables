@@ -9,7 +9,7 @@
   "scripts": {
     "build": "babel lib --out-dir ./dist --extensions \".tsx,.ts\" --ignore \"**/*.test.ts,**/*.test.tsx,**/*.d.ts\"",
     "start": "catalog start --babelrc=false",
-    "build-catalog": "catalog build --babelrc=false",
+    "build-catalog": "catalog build --babelrc=false --public-url=/slate-tables/",
     "test": "jest"
   },
   "jest": {
