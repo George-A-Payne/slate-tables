@@ -8,7 +8,8 @@
   "types": "./index.d.ts",
   "scripts": {
     "build": "babel lib --out-dir ./dist --extensions \".tsx,.ts\" --ignore \"**/*.test.ts,**/*.test.tsx,**/*.d.ts\"",
-    "storybook": "start-storybook",
+    "start": "start-storybook",
+    "build-storybook": "build-storybook -c .storybook -o .out",
     "test": "jest"
   },
   "jest": {
