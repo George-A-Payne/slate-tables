@@ -1,7 +1,6 @@
 lib
 !dist
 __tests__
-catalog
 .babelrc.js
 .gitignore
 .travis.yml
