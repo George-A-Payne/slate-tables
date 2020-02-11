@@ -2,14 +2,16 @@
 
 [![npm version](https://badge.fury.io/js/slate-tables.svg)](https://badge.fury.io/js/slate-tables)
 
+## Introduction
+
 A Slate plugin to handle tables.
 Forked from [slate-deep-tables](https://github.com/jasonphillips/slate-deep-table) that was forked from [slate-edit-table](https://github.com/GitbookIO/slate-edit-table).
 
-Documentation and Demo: https://george-a-payne.github.io/slate-tables/
+Demo: https://george-a-payne.github.io/slate-tables/
 
 ### Install
 
-```
+```shell
 npm install slate-tables
 ```
 
@@ -30,10 +32,12 @@ Slate is a fast-moving library, so check the CHANGELOG for information on the cu
 ### Usage
 
 ```js
-import Tables from 'slate-tables';
+import Tables from "slate-tables";
 
 const plugins = [
-  Tables({ /* options object here; see below */ }),
+  Tables({
+    /* options object here; see below */
+  })
 ];
 
 // now instantiate your Slate Editor with these plugins, according to slate documentation
@@ -41,87 +45,100 @@ const plugins = [
 
 #### Options
 
-- `[typeTable: String]` — type for table `default: 'table'`
-- `[typeRow: String]` — type for the rows `default: 'table_row'`
-- `[typeCell: String]` — type for the cells `default: 'table_cell'`
-- `[typeContent: String]` — type for the default blocks within cells `default: 'paragraph'`
-- `[typeDefault: String]` — type for the default blocks outside of cells, used to replace the table on deletion, if no other node is present, and for insertion  `default: 'paragraph'`
+| Option        | Type     | Default        | Description                                                                                                                                                                            |
+| :------------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `typeTable`   | `string` | `"table"`      | Type for table                                                                                                                                                                         |
+| `typeRow`     | `string` | `"table_row"`  | Type for rows                                                                                                                                                                          |
+| `typeCell`    | `string` | `"table_cell"` | Type for cells                                                                                                                                                                         |
+| `typeContent` | `string` | `"paragraph"`  | Type for the default blocks within cells                                                                                                                                               |
+| `typeDefault` | `string` | `"paragraph"`  | Type for the default blocks outside of cells, used to replace the table on deletion, if no other node is present, and for insertion when leaving the table, if there is nowhere to go. |
 
+## Commands
 
-### Queries and Commands
-
-`slate-tables` exports queries and commands that you can invoke on your `editor` instance:
-
-```js
-// anywhere where 'editor' is passed as an argument, or using the react Component's ref,
-// you may directly invoke any of the exported functions below, e.g:
-const inATable = editor.isSelectionInTable();
-
-if (!inATable) {
-  editor.insertTable();
-}
-```
-
-Check [example](`/catalog/components/TextEditor/index.js`) for usage in a typical context.
-
-#### `query isSelectionInTable()`
-
-`editor.isSelectionInTable() => Boolean`
-
-Return true if current cursor position is inside a table.
-
-#### `command insertTable()`
+#### `insertTable()`
 
 `editor.insertTable(columns: Number?, rows: Number?) => Editor`
 
 Insert a new empty table.
 
-#### `command insertRow()`
+#### `insertRow()`
 
 `editor.insertRow(at: Number?) => Editor`
 
 Insert a new row after the current one or at the specific index (`at`).
 
-#### `command insertColumn()`
+#### `insertColumn()`
 
 `editor.insertColumn(at: Number?) => Editor`
 
 Insert a new column after the current one or at the specific index (`at`).
 
-#### `command removeTable()`
+#### `removeTable()`
 
 `editor.removeTable() => Editor`
 
 Remove current table.
 
-#### `command removeRow()`
+#### `removeRow()`
 
 `editor.removeRow(at: Number?) => Editor`
 
 Remove current row or the one at a specific index (`at`).
 
-#### `command removeColumn()`
+#### `removeColumn()`
 
 `editor.removeColumn(at: Number?) => Editor`
 
 Remove current column or the one at a specific index (`at`).
 
-#### `command moveTableSelection()`
+#### `moveTableSelection()`
 
 `editor.moveTableSelection(column: Number, row: Number) => Editor`
 
 Move the selection to a specific position in the table.
 
-#### `command moveTableSelectionBy()`
+#### `moveTableSelectionBy()`
 
 `editor.moveTableSelectionBy(column: Number, row: Number) => Editor`
 
 Move the selection by the given amount of columns and rows.
 
-#### `command toggleTableHeaders()`
+#### `toggleTableHeaders()`
 
 `editor.toggleTableHeaders() => Editor`
 
 Toggles whether the table will render the first row as a header row (within a thead) or as a regular row.
 
+## Queries
 
+#### `isSelectionInTable()`
+
+`editor.isSelectionInTable() => Boolean`
+
+Return true if current cursor position is inside a table.
+
+## Developing
+
+### Install dependancies
+
+```shell
+yarn
+```
+
+### Build library
+
+```shell
+yarn build
+```
+
+### Build and watch for changes
+
+```shell
+yarn build --watch
+```
+
+### Run tests
+
+```shell
+yarn test
+```
