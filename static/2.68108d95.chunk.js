@@ -1,2 +1,0 @@
-webpackJsonp([2],{1011:function(e,n,t){var a=t(9),r=t(50),o=t(356).PageRenderer;o.__esModule&&(o=o.default);var c=r({displayName:"WrappedPageRenderer",getInitialState:function(){return{content:t(1017)}},componentWillMount:function(){},render:function(){return a.createElement(o,Object.assign({},this.props,{content:this.state.content}))}});c.__catalog_loader__=!0,e.exports=c},1017:function(e,n){e.exports="``` react\n<ExampleValue />\n```\n"}});
-//# sourceMappingURL=2.68108d95.chunk.js.map
