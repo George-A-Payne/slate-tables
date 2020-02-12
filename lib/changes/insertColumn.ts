@@ -10,7 +10,7 @@ const insertColumn = (options: Options, editor: Editor, at?: number) => {
     const index = at != null ? at : position.getColumnIndex() + 1;
 
     // Insert the new cell
-    editor.withoutNormalizing( () => {
+    editor.withoutNormalizing(() => {
         position.table.nodes.forEach((row) => {
             const newCell = createCell(options, index);
             editor.insertNodeByKey(row!.key, index, newCell);

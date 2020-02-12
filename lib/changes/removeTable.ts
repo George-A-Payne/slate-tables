@@ -14,10 +14,8 @@ const removeTable = (options: Options, editor: Editor) => {
 
     if (!previous && !next) {
         const blank = Block.create({
-            type:  options.typeDefault,
-            nodes: List([
-                Text.create(''),
-            ]),
+            type: options.typeDefault,
+            nodes: List([Text.create('')]),
         } as BlockProperties);
 
         editor.replaceNodeByKey(table.key, blank);

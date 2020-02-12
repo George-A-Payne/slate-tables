@@ -11,7 +11,7 @@ describe('insertColumn', () => {
             cursor: [1, 1],
         });
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -21,7 +21,9 @@ describe('insertColumn', () => {
                         <p>Row 0, Col 1</p>
                     </td>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                 </tr>
                 <tr>
@@ -32,7 +34,9 @@ describe('insertColumn', () => {
                         <p>Row 1, Col 1</p>
                     </td>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                 </tr>
                 <tr>
@@ -43,11 +47,13 @@ describe('insertColumn', () => {
                         <p>Row 2, Col 1</p>
                     </td>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;
@@ -65,11 +71,13 @@ describe('insertColumn', () => {
             cursor: [1, 1],
         });
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                     <td>
                         <p>Row 0, Col 0</p>
@@ -80,7 +88,9 @@ describe('insertColumn', () => {
                 </tr>
                 <tr>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                     <td>
                         <p>Row 1, Col 0</p>
@@ -91,7 +101,9 @@ describe('insertColumn', () => {
                 </tr>
                 <tr>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                     <td>
                         <p>Row 2, Col 0</p>
@@ -100,8 +112,8 @@ describe('insertColumn', () => {
                         <p>Row 2, Col 1</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;

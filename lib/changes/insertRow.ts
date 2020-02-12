@@ -15,9 +15,7 @@ const insertRow = (options: Options, editor: Editor, at?: number, textGetter: Te
     editor.withoutNormalizing(() => {
         editor
             .insertNodeByKey(position.table.key, index, newRow)
-            .moveToEndOfNode(
-                newRow.nodes.get(position.getColumnIndex()),
-            );
+            .moveToEndOfNode(newRow.nodes.get(position.getColumnIndex()));
 
         updateTableMeta(options, editor);
     });

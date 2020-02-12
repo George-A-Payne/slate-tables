@@ -7,9 +7,7 @@ import hyperscript from './hyperscript';
 const createValue = (...inputs: JSX.Element[]): Value => {
     const value = (
         <value>
-            <document>
-                {inputs}
-            </document>
+            <document>{inputs}</document>
         </value>
     ) as any;
 

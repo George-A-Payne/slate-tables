@@ -11,9 +11,8 @@ const DEFAULTS = {
 };
 
 class TablePosition extends Record(DEFAULTS) {
-    static isInCell = ({ value }: Editor, { typeCell }: Options): boolean => (
-        value.startBlock.type === typeCell || !!value.document.getClosest(value.startBlock.key, ofType(typeCell))
-    )
+    static isInCell = ({ value }: Editor, { typeCell }: Options): boolean =>
+        value.startBlock.type === typeCell || !!value.document.getClosest(value.startBlock.key, ofType(typeCell));
 
     public readonly table!: Block;
     public readonly row!: Block;
@@ -33,14 +32,14 @@ class TablePosition extends Record(DEFAULTS) {
         const cells = (rows.get(0) as Block).nodes;
 
         return cells.size;
-    }
+    };
 
     public getHeight = (): number => {
         const { table } = this;
         const rows = table.nodes;
 
         return rows.size;
-    }
+    };
 
     public relativePosition = ([x, y]: [number, number]): [number, number] => {
         const rowIndex = this.getRowIndex();
@@ -52,7 +51,7 @@ class TablePosition extends Record(DEFAULTS) {
         let yy = y + rowIndex;
 
         if (xx < 0) {
-            xx = (width - 1);
+            xx = width - 1;
             yy--;
         }
 
@@ -70,49 +69,47 @@ class TablePosition extends Record(DEFAULTS) {
         }
 
         return [xx, yy];
-    }
+    };
 
     public getRowIndex = (): number => {
         const { table, row } = this;
         const rows = table.nodes;
 
         return rows.findIndex((x) => x === row);
-    }
+    };
 
-    public getRow = (index: number = this.getRowIndex()): Block => (
-        this.table.nodes.get(index) as Block
-    )
+    public getRow = (index: number = this.getRowIndex()): Block => this.table.nodes.get(index) as Block;
 
     public getColumnIndex = (): number => {
         const { row, cell } = this;
         const cells = row.nodes;
 
         return cells.findIndex((x) => x === cell);
-    }
+    };
 
     public isFirstCell = (): boolean => {
         return this.isFirstRow() && this.isFirstColumn();
-    }
+    };
 
     public isLastCell = (): boolean => {
         return this.isLastRow() && this.isLastColumn();
-    }
+    };
 
     public isFirstRow = (): boolean => {
         return this.getRowIndex() === 0;
-    }
+    };
 
     public isLastRow = (): boolean => {
         return this.getRowIndex() === this.getHeight() - 1;
-    }
+    };
 
     public isFirstColumn = (): boolean => {
         return this.getColumnIndex() === 0;
-    }
+    };
 
     public isLastColumn = (): boolean => {
         return this.getColumnIndex() === this.getWidth() - 1;
-    }
+    };
 }
 
 export default TablePosition;

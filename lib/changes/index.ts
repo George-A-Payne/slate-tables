@@ -1,4 +1,3 @@
-
 export { default as moveTableSelection } from './moveTableSelection';
 export { default as moveTableSelectionBy } from './moveTableSelectionBy';
 

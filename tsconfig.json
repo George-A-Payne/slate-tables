@@ -1,7 +1,5 @@
 {
-    "files": [
-        "./lib/index.ts"
-    ],
+    "files": ["./lib/index.ts"],
     "compilerOptions": {
         "jsx": "react",
         "lib": ["dom", "es2017", "dom.iterable"],
@@ -23,11 +21,6 @@
             "@tests/*": ["../__tests__/*"]
         }
     },
-    "include": [
-        "./lib/**/*",
-        "./__tests__/**/*"
-    ],
-    "exclude": [
-        "**/node_modules/**/*"
-    ]
+    "include": ["./lib/**/*", "./__tests__/**/*"],
+    "exclude": ["**/node_modules/**/*"]
 }

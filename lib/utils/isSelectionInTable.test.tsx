@@ -22,8 +22,8 @@ describe('isSelectionInTable', () => {
     });
 
     test('return false if cursor is outside table', () => {
-        const input = (
-              <value>
+        const input = ((
+            <value>
                 <document>
                     <p key="_cursor_">A paragraph not in a table</p>
                     <table>
@@ -35,7 +35,7 @@ describe('isSelectionInTable', () => {
                     </table>
                 </document>
             </value>
-        ) as any as Value;
+        ) as any) as Value;
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;

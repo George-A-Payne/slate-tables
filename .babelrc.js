@@ -6,11 +6,7 @@ module.exports = {
             require.resolve('@babel/preset-env'),
             {
                 targets: {
-                    browsers: [
-                        'last 2 versions',
-                        'Explorer 11',
-                        'Chrome >= 52',
-                    ],
+                    browsers: ['last 2 versions', 'Explorer 11', 'Chrome >= 52'],
                 },
             },
         ],
@@ -29,9 +25,9 @@ module.exports = {
                     schema: './lib/schema',
                     types: './lib/types',
                     utils: './lib/utils',
-                    '@tests': './__tests__'
+                    '@tests': './__tests__',
                 },
             },
-        ]
-    ]
-}
+        ],
+    ],
+};
