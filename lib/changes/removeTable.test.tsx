@@ -11,9 +11,7 @@ describe('removeTable', () => {
             cursor: [1, 1],
         });
 
-        const output = createValue((
-            <p />
-        ));
+        const output = createValue(<p />);
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;
@@ -26,44 +24,34 @@ describe('removeTable', () => {
 
     test('the table, without replacement, if another node is present', () => {
         const input = createValue(
-            (
-                <table>
-                    <tr>
-                        <td>
-                            <p>Row 0, Col 0</p>
-                        </td>
-                        <td>
-                            <p>Row 0, Col 1</p>
-                        </td>
-                        <td>
-                            <p>Row 0, Col 2</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p key={'_cursor_'}>Row 1, Col 0</p>
-                        </td>
-                        <td>
-                            <p>Row 1, Col 1</p>
-                        </td>
-                        <td>
-                            <p>Row 1, Col 2</p>
-                        </td>
-                    </tr>
-                </table>
-            ),
-            (
-                <p>
-                    {'hello'}
-                </p>
-            ),
+            <table>
+                <tr>
+                    <td>
+                        <p>Row 0, Col 0</p>
+                    </td>
+                    <td>
+                        <p>Row 0, Col 1</p>
+                    </td>
+                    <td>
+                        <p>Row 0, Col 2</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p key={'_cursor_'}>Row 1, Col 0</p>
+                    </td>
+                    <td>
+                        <p>Row 1, Col 1</p>
+                    </td>
+                    <td>
+                        <p>Row 1, Col 2</p>
+                    </td>
+                </tr>
+            </table>,
+            <p>{'hello'}</p>,
         );
 
-        const output = createValue((
-            <p>
-                {'hello'}
-            </p>
-        ));
+        const output = createValue(<p>{'hello'}</p>);
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;
@@ -75,7 +63,7 @@ describe('removeTable', () => {
     });
 
     test('removes a nested table', () => {
-        const input = createValue((
+        const input = createValue(
             <table>
                 <tr>
                     <td>
@@ -122,10 +110,10 @@ describe('removeTable', () => {
                         <p>Table 1, Row 1, Col 2</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -140,7 +128,7 @@ describe('removeTable', () => {
                 </tr>
                 <tr>
                     <td>
-                        <p/>
+                        <p />
                     </td>
                     <td>
                         <p>Table 1, Row 1, Col 1</p>
@@ -149,8 +137,8 @@ describe('removeTable', () => {
                         <p>Table 1, Row 1, Col 2</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;

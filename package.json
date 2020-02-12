@@ -1,62 +1,64 @@
 {
-  "name": "slate-tables",
-  "description": "A Slate plugin to handle tables.",
-  "version": "0.9.0",
-  "license": "Apache-2.0",
-  "repository": "git://github.com/George-A-Payne/slate-tables.git",
-  "main": "./dist/index.js",
-  "types": "./index.d.ts",
-  "scripts": {
-    "build": "babel lib --out-dir ./dist --extensions \".tsx,.ts\" --ignore \"**/*.test.ts,**/*.test.tsx,**/*.d.ts\"",
-    "start": "start-storybook",
-    "build-storybook": "build-storybook -c .storybook -o .out",
-    "test": "jest"
-  },
-  "jest": {
-    "testMatch": [
-      "**/?(*.)+(test).[jt]s?(x)"
+    "name": "slate-tables",
+    "description": "A Slate plugin to handle tables.",
+    "version": "0.9.0",
+    "license": "Apache-2.0",
+    "repository": "git://github.com/George-A-Payne/slate-tables.git",
+    "main": "./dist/index.js",
+    "types": "./index.d.ts",
+    "prettier": "./prettier",
+    "scripts": {
+        "build": "babel lib --out-dir ./dist --extensions \".tsx,.ts\" --ignore \"**/*.test.ts,**/*.test.tsx,**/*.d.ts\"",
+        "start": "start-storybook",
+        "build-storybook": "build-storybook -c .storybook -o .out",
+        "test": "jest"
+    },
+    "jest": {
+        "testMatch": [
+            "**/?(*.)+(test).[jt]s?(x)"
+        ]
+    },
+    "peerDependencies": {
+        "immutable": ">=3.8.1",
+        "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
+        "react-dom": "^0.14.0 || ^15.0.0 || ^16.0.0",
+        "slate": "0.44.x",
+        "slate-html-serializer": ">=0.7.20"
+    },
+    "devDependencies": {
+        "@babel/cli": "7.8.4",
+        "@babel/core": "7.8.4",
+        "@babel/plugin-proposal-class-properties": "7.8.3",
+        "@babel/plugin-proposal-object-rest-spread": "7.8.3",
+        "@babel/preset-env": "7.8.4",
+        "@babel/preset-react": "7.8.3",
+        "@babel/preset-typescript": "7.8.3",
+        "@storybook/addon-docs": "5.3.12",
+        "@storybook/addons": "5.3.12",
+        "@storybook/react": "5.3.12",
+        "@types/jest": "24.0.11",
+        "@types/react": "16.8.4",
+        "@types/react-dom": "16.8.2",
+        "@types/slate-html-serializer": "0.6.3",
+        "@types/slate-react": "0.20.3",
+        "babel-jest": "24.5.0",
+        "babel-loader": "8.0.6",
+        "babel-plugin-module-resolver": "3.2.0",
+        "immutable": "3.8.1",
+        "jest": "24.5.0",
+        "prettier": "1.19.1",
+        "react": "16.12.0",
+        "react-dom": "16.12.0",
+        "react-is": "16.12.0",
+        "slate": "0.44.12",
+        "slate-html-serializer": "0.7.36",
+        "slate-hyperscript": "0.11.27",
+        "slate-react": "0.21.18",
+        "tslint": "5.12.1",
+        "tslint-react": "3.6.0",
+        "typescript": "3.7.5"
+    },
+    "keywords": [
+        "slate"
     ]
-  },
-  "peerDependencies": {
-    "immutable": ">=3.8.1",
-    "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0 || ^16.0.0",
-    "slate": "0.44.x",
-    "slate-html-serializer": ">=0.7.20"
-  },
-  "devDependencies": {
-    "@babel/cli": "7.8.4",
-    "@babel/core": "7.8.4",
-    "@babel/plugin-proposal-class-properties": "7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "7.8.3",
-    "@babel/preset-env": "7.8.4",
-    "@babel/preset-react": "7.8.3",
-    "@babel/preset-typescript": "7.8.3",
-    "@storybook/addon-docs": "5.3.12",
-    "@storybook/addons": "5.3.12",
-    "@storybook/react": "5.3.12",
-    "@types/jest": "24.0.11",
-    "@types/react": "16.8.4",
-    "@types/react-dom": "16.8.2",
-    "@types/slate-html-serializer": "0.6.3",
-    "@types/slate-react": "0.20.3",
-    "babel-jest": "24.5.0",
-    "babel-loader": "8.0.6",
-    "babel-plugin-module-resolver": "3.2.0",
-    "immutable": "3.8.1",
-    "jest": "24.5.0",
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
-    "react-is": "16.12.0",
-    "slate": "0.44.12",
-    "slate-html-serializer": "0.7.36",
-    "slate-hyperscript": "0.11.27",
-    "slate-react": "0.21.18",
-    "tslint": "5.12.1",
-    "tslint-react": "3.6.0",
-    "typescript": "3.7.5"
-  },
-  "keywords": [
-    "slate"
-  ]
 }

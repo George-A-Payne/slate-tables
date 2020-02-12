@@ -16,19 +16,17 @@ const schema = (options: Options): SchemaProperties => ({
     blocks: {
         [options.typeCell]: {
             parent: { type: options.typeRow },
-            nodes: [{
-                match: { object: 'block' },
-                min: 1,
-            }],
+            nodes: [
+                {
+                    match: { object: 'block' },
+                    min: 1,
+                },
+            ],
             normalize: (editor, error) => {
                 // enforce cells must contain blocks, insert or wrap if not
                 switch (error.code) {
                     case SchemaViolations.ChildRequired: {
-                        editor.insertNodeByKey(
-                            error.node.key,
-                            error.index,
-                            Block.create(options.typeContent),
-                        );
+                        editor.insertNodeByKey(error.node.key, error.index, Block.create(options.typeContent));
                         return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ChildObjectInvalid: {
@@ -42,10 +40,7 @@ const schema = (options: Options): SchemaProperties => ({
                         return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ParentTypeInvalid: {
-                        editor.wrapBlockByKey(
-                            error.node.key,
-                            options.typeRow,
-                        );
+                        editor.wrapBlockByKey(error.node.key, options.typeRow);
                         return updateTableMeta(options, editor, error.node);
                     }
                 }
@@ -53,66 +48,53 @@ const schema = (options: Options): SchemaProperties => ({
         },
         [options.typeRow]: {
             parent: { type: options.typeTable },
-            nodes: [{
-                match: {
-                    object: 'block',
-                    type: options.typeCell,
+            nodes: [
+                {
+                    match: {
+                        object: 'block',
+                        type: options.typeCell,
+                    },
+                    min: 1,
                 },
-                min: 1,
-            }],
+            ],
             normalize: (editor, error) => {
                 // enforce rows must contain cells, drop all else
                 switch (error.code) {
                     case SchemaViolations.ChildRequired: {
-                        editor.insertNodeByKey(
-                            error.node.key,
-                            error.index,
-                            Block.create(options.typeCell),
-                        );
+                        editor.insertNodeByKey(error.node.key, error.index, Block.create(options.typeCell));
                         return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ChildTypeInvalid:
                     case SchemaViolations.ChildObjectInvalid: {
-                        editor.replaceNodeByKey(
-                            error.child.key,
-                            Block.create(options.typeCell),
-                        );
+                        editor.replaceNodeByKey(error.child.key, Block.create(options.typeCell));
                         return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ParentTypeInvalid: {
-                        editor.wrapBlockByKey(
-                            error.node.key,
-                            options.typeTable,
-                        );
+                        editor.wrapBlockByKey(error.node.key, options.typeTable);
                         return updateTableMeta(options, editor, error.node);
                     }
                 }
             },
         },
         [options.typeTable]: {
-            nodes: [{
-                match: {
-                    object: 'block',
-                    type: options.typeRow,
+            nodes: [
+                {
+                    match: {
+                        object: 'block',
+                        type: options.typeRow,
+                    },
+                    min: 1,
                 },
-                min: 1,
-            }],
+            ],
             normalize: (editor, error) => {
                 // enforce rows must contain cells, drop all else
                 switch (error.code) {
                     case SchemaViolations.ChildRequired: {
-                        editor.insertNodeByKey(
-                            error.node.key,
-                            error.index,
-                            Block.create(options.typeRow),
-                        );
+                        editor.insertNodeByKey(error.node.key, error.index, Block.create(options.typeRow));
                         return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ChildObjectInvalid: {
-                        editor.replaceNodeByKey(
-                            error.child.key,
-                            Block.create(options.typeRow),
-                        );
+                        editor.replaceNodeByKey(error.child.key, Block.create(options.typeRow));
                         return updateTableMeta(options, editor, error.node);
                     }
                     case SchemaViolations.ChildTypeInvalid: {

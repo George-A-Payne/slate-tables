@@ -21,9 +21,7 @@ const removeRow = (options: Options, editor: Editor, at?: number) => {
     const nextFocusCell = nextFocusRow.nodes.get(cellIndex) as Block;
 
     editor.withoutNormalizing(() => {
-        editor
-            .removeNodeByKey(row.key)
-            .moveTo(nextFocusCell.getFirstText()!.key, 0);
+        editor.removeNodeByKey(row.key).moveTo(nextFocusCell.getFirstText()!.key, 0);
 
         updateTableMeta(options, editor);
     });

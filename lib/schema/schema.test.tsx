@@ -5,7 +5,7 @@ import { createEditor, hyperscript, createValue } from '@tests';
 
 describe('schema', () => {
     test('handles a standard table', () => {
-        const input = createValue((
+        const input = createValue(
             <table>
                 <tr>
                     <td>
@@ -29,10 +29,10 @@ describe('schema', () => {
                         <p>Row 1, Col 2</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -56,8 +56,8 @@ describe('schema', () => {
                         <p>Row 1, Col 2</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
 
@@ -65,23 +65,25 @@ describe('schema', () => {
     });
 
     test('tables must contain rows', () => {
-        const input = (
+        const input = ((
             <value>
                 <document>
                     <table>no rows</table>
                 </document>
             </value>
-        ) as any as Value;
+        ) as any) as Value;
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
 
@@ -89,7 +91,7 @@ describe('schema', () => {
     });
 
     test('tables remove malformed rows', () => {
-        const input = (
+        const input = ((
             <value>
                 <document>
                     <table>
@@ -111,9 +113,9 @@ describe('schema', () => {
                     </table>
                 </document>
             </value>
-        ) as any as Value;
+        ) as any) as Value;
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -125,8 +127,8 @@ describe('schema', () => {
                         <p>Row 3, Col 1</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
 
@@ -134,7 +136,7 @@ describe('schema', () => {
     });
 
     test('cells must contain blocks', () => {
-        const input = (
+        const input = ((
             <value>
                 <document>
                     <table>
@@ -148,9 +150,9 @@ describe('schema', () => {
                     </table>
                 </document>
             </value>
-        ) as any as Value;
+        ) as any) as Value;
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -159,7 +161,7 @@ describe('schema', () => {
                     <td>
                         <p>
                             <text />
-                                <a>Row 1, Col 2</a>
+                            <a>Row 1, Col 2</a>
                             <text />
                         </p>
                     </td>
@@ -167,8 +169,8 @@ describe('schema', () => {
                         <p>Row 1, Col 3</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
 
@@ -176,7 +178,7 @@ describe('schema', () => {
     });
 
     test('rows must not contain blocks', () => {
-        const input = (
+        const input = ((
             <value>
                 <document>
                     <table>
@@ -195,9 +197,9 @@ describe('schema', () => {
                     </table>
                 </document>
             </value>
-        ) as any as Value;
+        ) as any) as Value;
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -210,11 +212,11 @@ describe('schema', () => {
                         <p>Row 1, Col 3</p>
                     </td>
                     <td>
-                        <p/>
+                        <p />
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
 
@@ -222,7 +224,7 @@ describe('schema', () => {
     });
 
     test('table must not contain blocks', () => {
-        const input = (
+        const input = ((
             <value>
                 <document>
                     <table>
@@ -241,9 +243,9 @@ describe('schema', () => {
                     </table>
                 </document>
             </value>
-        ) as any as Value;
+        ) as any) as Value;
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -256,8 +258,8 @@ describe('schema', () => {
                         <p>Row 1, Col 3</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
 
@@ -265,7 +267,7 @@ describe('schema', () => {
     });
 
     test('rows and cells must be within tables', () => {
-        const input = (
+        const input = ((
             <value>
                 <document>
                     <tr>
@@ -274,27 +276,23 @@ describe('schema', () => {
                     <td>No rows</td>
                 </document>
             </value>
-        ) as any as Value;
+        ) as any) as Value;
 
         const output = createValue(
-            (
-                <table>
-                    <tr>
-                        <td>
-                            <p>No table</p>
-                        </td>
-                    </tr>
-                </table>
-            ),
-            (
-                <table>
-                    <tr>
-                        <td>
-                            <p>No rows</p>
-                        </td>
-                    </tr>
-                </table>
-            ),
+            <table>
+                <tr>
+                    <td>
+                        <p>No table</p>
+                    </td>
+                </tr>
+            </table>,
+            <table>
+                <tr>
+                    <td>
+                        <p>No rows</p>
+                    </td>
+                </tr>
+            </table>,
         );
 
         const editor = createEditor(input);
@@ -303,7 +301,7 @@ describe('schema', () => {
     });
 
     test('rows require the same number of columns', () => {
-        const input = (
+        const input = ((
             <value>
                 <document>
                     <table>
@@ -335,9 +333,9 @@ describe('schema', () => {
                     </table>
                 </document>
             </value>
-        ) as any as Value;
+        ) as any) as Value;
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -355,10 +353,14 @@ describe('schema', () => {
                         <p>There is only one column here</p>
                     </td>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                 </tr>
                 <tr>
@@ -366,18 +368,19 @@ describe('schema', () => {
                         <p>Col 1, Row 3</p>
                     </td>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                     <td>
                         <p>Col 3, Row 3</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
 
         expect(editor.value.toJSON()).toEqual(output.toJSON());
     });
-
 });

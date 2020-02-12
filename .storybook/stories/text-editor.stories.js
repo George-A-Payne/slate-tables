@@ -1,9 +1,9 @@
-import React from "react";
-import TextEditor from "./components/TextEditor";
-import ExampleValue from "./components/ExampleValue";
+import React from 'react';
+import TextEditor from './components/TextEditor';
+import ExampleValue from './components/ExampleValue';
 
 export default {
-  title: "Slate Tables"
+    title: 'Slate Tables',
 };
 
 export const EmptyEditor = () => <TextEditor />;

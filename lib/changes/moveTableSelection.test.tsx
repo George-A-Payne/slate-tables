@@ -14,9 +14,7 @@ describe('moveTableSelection', () => {
     const editor = createEditor(input);
     const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;
 
-    editor
-        .moveToRangeOfNode(cursorBlock)
-        .moveForward(offset);
+    editor.moveToRangeOfNode(cursorBlock).moveForward(offset);
 
     editor.moveTableSelection(2, 2);
 

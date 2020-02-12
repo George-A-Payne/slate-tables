@@ -11,7 +11,7 @@ describe('insertRow', () => {
             cursor: [1, 1],
         });
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -37,17 +37,23 @@ describe('insertRow', () => {
                 </tr>
                 <tr>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;
@@ -65,17 +71,23 @@ describe('insertRow', () => {
             cursor: [1, 1],
         });
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                     <td>
-                        <p><text /></p>
+                        <p>
+                            <text />
+                        </p>
                     </td>
                 </tr>
                 <tr>
@@ -100,8 +112,8 @@ describe('insertRow', () => {
                         <p>Row 1, Col 2</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;

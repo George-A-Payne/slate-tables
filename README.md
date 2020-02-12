@@ -17,13 +17,13 @@ npm install slate-tables
 
 ### Features
 
-- Pressing <kbd>Up</kbd> and <kbd>Down</kbd>, move the cursor to next/previous row
-- Pressing <kbd>Tab</kbd>, move the select to next cell
-- Pressing <kbd>Shift+Tab</kbd>, move the select to previous cell
-- Permits nested block content within table cells
-- Optionally create headerless tables
-- Rows and Columns can only be removed by commands
-- Rows and Columns retain their order on seletion deletion
+-   Pressing <kbd>Up</kbd> and <kbd>Down</kbd>, move the cursor to next/previous row
+-   Pressing <kbd>Tab</kbd>, move the select to next cell
+-   Pressing <kbd>Shift+Tab</kbd>, move the select to previous cell
+-   Permits nested block content within table cells
+-   Optionally create headerless tables
+-   Rows and Columns can only be removed by commands
+-   Rows and Columns retain their order on seletion deletion
 
 ### Compatibility
 
@@ -32,12 +32,12 @@ Slate is a fast-moving library, so check the CHANGELOG for information on the cu
 ### Usage
 
 ```js
-import Tables from "slate-tables";
+import Tables from 'slate-tables';
 
 const plugins = [
-  Tables({
-    /* options object here; see below */
-  })
+    Tables({
+        /* options object here; see below */
+    }),
 ];
 
 // now instantiate your Slate Editor with these plugins, according to slate documentation

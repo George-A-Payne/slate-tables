@@ -10,7 +10,8 @@ const onUpDown = (event: KeyboardEvent, editor: Editor, options: Options) => {
     const position = new TablePosition(editor, options);
 
     const { document, startBlock } = editor.value;
-    const nextPosition = event.key === KEY.UP ? document.getPreviousBlock(startBlock.key) : document.getNextBlock(startBlock.key);
+    const nextPosition =
+        event.key === KEY.UP ? document.getPreviousBlock(startBlock.key) : document.getNextBlock(startBlock.key);
 
     // we have somewhere to go
     if (nextPosition != null) {
@@ -60,9 +61,7 @@ const moveUp = (editor: Editor, options: Options, table: Block): Editor => {
         const index = parent.nodes.findIndex((x) => x === table);
         const nextPosition = Block.create(options.typeDefault);
 
-        return editor
-            .insertNodeByKey(editor.value.document.key, index, nextPosition)
-            .moveTo(nextPosition.key);
+        return editor.insertNodeByKey(editor.value.document.key, index, nextPosition).moveTo(nextPosition.key);
     }
 
     // we are moving up to parent table
@@ -105,9 +104,7 @@ const moveDown = (editor: Editor, options: Options, table: Block): Editor => {
         const index = parent.nodes.findIndex((x) => x === table);
         const nextPosition = Block.create(options.typeDefault);
 
-        return editor
-            .insertNodeByKey(editor.value.document.key, index + 1, nextPosition)
-            .moveTo(nextPosition.key);
+        return editor.insertNodeByKey(editor.value.document.key, index + 1, nextPosition).moveTo(nextPosition.key);
     }
 
     // we are moving up to parent table

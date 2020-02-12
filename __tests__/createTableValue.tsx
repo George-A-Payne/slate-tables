@@ -9,24 +9,21 @@ interface Options {
     cursor: [number, number];
 }
 
-const createTableValue = ({
-    rows,
-    columns,
-    cursor = [0, 0],
-}: Options) => createValue((
-    <table>
-        { Array.from({ length: rows }, (_, row) => (
-            <tr>
-                { Array.from({ length: columns }, (__, column) => (
-                    <td>
-                        <p key={cursor[0] === row && cursor[1] === column ? '_cursor_' : undefined}>
-                            {`Row ${row }, Col ${column}`}
-                        </p>
-                    </td>
-                ))}
-            </tr>
-        ))}
-    </table>
-));
+const createTableValue = ({ rows, columns, cursor = [0, 0] }: Options) =>
+    createValue(
+        <table>
+            {Array.from({ length: rows }, (_, row) => (
+                <tr>
+                    {Array.from({ length: columns }, (__, column) => (
+                        <td>
+                            <p
+                                key={cursor[0] === row && cursor[1] === column ? '_cursor_' : undefined}
+                            >{`Row ${row}, Col ${column}`}</p>
+                        </td>
+                    ))}
+                </tr>
+            ))}
+        </table>,
+    );
 
 export default createTableValue;

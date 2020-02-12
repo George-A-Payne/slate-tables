@@ -12,7 +12,7 @@ function createRow(options: Options, columns: number, index: number, textGetter:
         .toList();
 
     return Block.create({
-        type:  options.typeRow,
+        type: options.typeRow,
         nodes: cellNodes,
         data: {
             cells: columns,

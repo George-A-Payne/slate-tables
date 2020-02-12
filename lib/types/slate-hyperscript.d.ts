@@ -7,8 +7,8 @@ declare module 'slate-hyperscript' {
 }
 
 declare namespace JSX {
-   interface IntrinsicElements {
-       table: any;
-       [elemName: string]: any;
-   }
+    interface IntrinsicElements {
+        table: any;
+        [elemName: string]: any;
+    }
 }

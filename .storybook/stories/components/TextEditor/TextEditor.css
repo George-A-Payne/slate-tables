@@ -1,7 +1,7 @@
 .editor {
     background-color: #fdfdfd;
     border-radius: 2px;
-    border: 1px solid #EBEBEB;
+    border: 1px solid #ebebeb;
 }
 
 .slate {
@@ -20,7 +20,7 @@
 }
 
 .slate thead {
-    background-color: #EBEBEB;
+    background-color: #ebebeb;
 }
 
 .slate p:first-child {
@@ -34,7 +34,7 @@
 .toolbar {
     padding: 8px;
     padding-bottom: 0;
-    border-bottom: 1px solid #EBEBEB;
+    border-bottom: 1px solid #ebebeb;
 }
 
 .toolbar button {
@@ -53,7 +53,7 @@
 
     font-family: monospace;
     font-size: 0.8rem;
-    background-color: #EBEBEB;
+    background-color: #ebebeb;
     padding: 8px;
     border-radius: 2px;
     margin-right: 8px;
@@ -70,4 +70,3 @@
     cursor: not-allowed;
     opacity: 0.4;
 }
-

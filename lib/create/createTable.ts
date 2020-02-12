@@ -12,7 +12,7 @@ function createTable(options: Options, columns: number, rows: number, textGetter
         .toList();
 
     return Block.create({
-        type:  options.typeTable,
+        type: options.typeTable,
         nodes: rowNodes,
         data: {
             columns,

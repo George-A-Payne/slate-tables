@@ -1,4 +1,3 @@
-
 import { Editor } from 'slate';
 
 import { Options } from 'types';
@@ -11,7 +10,7 @@ import { moveTableSelectionBy } from 'changes';
  */
 const onTab = (event: KeyboardEvent, editor: Editor, options: Options): Editor => {
     event.preventDefault();
-    const direction = (event.shiftKey ? -1 : +1);
+    const direction = event.shiftKey ? -1 : +1;
     const position = new TablePosition(editor, options);
 
     if ((position.isFirstCell() && direction === -1) || (position.isLastCell() && direction === 1)) {

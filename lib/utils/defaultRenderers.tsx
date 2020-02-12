@@ -33,21 +33,19 @@ const makeRenderers = (options: Options) => (props: any, editor: Editor, next: (
             const { header, rows } = splitHeader(props);
             return (
                 <table>
-                    {header &&
-                        <thead {...props.attributes}>
-                            {header}
-                        </thead>
-                    }
-                    <tbody {...props.attributes}>
-                        {rows}
-                    </tbody>
+                    {header && <thead {...props.attributes}>{header}</thead>}
+                    <tbody {...props.attributes}>{rows}</tbody>
                 </table>
             );
         }
-        case options.typeRow: return <tr {...props.attributes}>{props.children}</tr>;
-        case options.typeCell: return <td {...props.attributes}>{props.children}</td>;
-        case options.typeContent: return <p {...props.attributes}>{props.children}</p>;
-        default: return next();
+        case options.typeRow:
+            return <tr {...props.attributes}>{props.children}</tr>;
+        case options.typeCell:
+            return <td {...props.attributes}>{props.children}</td>;
+        case options.typeContent:
+            return <p {...props.attributes}>{props.children}</p>;
+        default:
+            return next();
     }
 };
 

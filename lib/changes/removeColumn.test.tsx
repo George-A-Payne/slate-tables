@@ -11,7 +11,7 @@ describe('removeColumn', () => {
             cursor: [1, 1],
         });
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -37,8 +37,8 @@ describe('removeColumn', () => {
                         <p>Row 2, Col 2</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;
@@ -56,7 +56,7 @@ describe('removeColumn', () => {
             cursor: [1, 1],
         });
 
-        const output = createValue((
+        const output = createValue(
             <table>
                 <tr>
                     <td>
@@ -82,8 +82,8 @@ describe('removeColumn', () => {
                         <p>Row 2, Col 1</p>
                     </td>
                 </tr>
-            </table>
-        ));
+            </table>,
+        );
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;
@@ -101,9 +101,7 @@ describe('removeColumn', () => {
             cursor: [0, 0],
         });
 
-        const output = createValue((
-            <p>{''}</p>
-        ));
+        const output = createValue(<p>{''}</p>);
 
         const editor = createEditor(input);
         const cursorBlock = editor.value.document.getDescendant('_cursor_') as Block;

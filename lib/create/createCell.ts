@@ -8,10 +8,8 @@ const createCell = ({ typeCell, typeContent }: Options, index: number, text: str
         type: typeCell,
         nodes: List([
             Block.create({
-                type:  typeContent,
-                nodes: List([
-                    Text.create(text),
-                ]),
+                type: typeContent,
+                nodes: List([Text.create(text)]),
             } as BlockProperties),
         ]),
         data: {
