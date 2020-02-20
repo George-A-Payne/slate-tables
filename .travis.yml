@@ -2,3 +2,15 @@ sudo: false
 language: node_js
 node_js:
     - 'stable'
+before_script:
+    - yarn build-storybook
+
+deploy:
+    provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    local_dir: .out
+    repo: George-A-Payne/slate-tables
+    target_branch: gh-pages
+    on:
+        branch: master
