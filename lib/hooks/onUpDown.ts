@@ -6,41 +6,6 @@ import { moveTableSelectionBy } from 'changes';
 
 import { KEY } from './onKeyDown';
 
-const onUpDown = (event: KeyboardEvent, editor: Editor, options: Options) => {
-    const position = new TablePosition(editor, options);
-
-    const { document, startBlock } = editor.value;
-    const nextPosition =
-        event.key === KEY.UP ? document.getPreviousBlock(startBlock.key) : document.getNextBlock(startBlock.key);
-
-    // we have somewhere to go
-    if (nextPosition != null) {
-        const nextPositionParentCell = document.getClosest(nextPosition.key, ofType(options.typeCell));
-
-        // and it is contained in the current cell
-        if (
-            nextPositionParentCell != null &&
-            (nextPositionParentCell === position.cell || position.cell.hasDescendant(nextPositionParentCell.key))
-        ) {
-            return editor;
-        }
-    }
-
-    // we aren't navigating within our cell
-    event.preventDefault();
-
-    if (event.key === KEY.UP && position.isFirstRow()) {
-        return moveUp(editor, options, position.table);
-    }
-
-    if (event.key === KEY.DOWN && position.isLastRow()) {
-        return moveDown(editor, options, position.table);
-    }
-
-    const direction = event.key === KEY.UP ? -1 : +1;
-    return moveTableSelectionBy(options, editor, 0, direction);
-};
-
 const moveUp = (editor: Editor, options: Options, table: Block): Editor => {
     const { document } = editor.value;
     const previous = document.getPreviousBlock(table.key);
@@ -125,6 +90,41 @@ const moveDown = (editor: Editor, options: Options, table: Block): Editor => {
     const nextCell = nextRow.nodes.get(cellIndex) as Block;
 
     return editor.moveTo(nextCell.getFirstText()!.key);
+};
+
+const onUpDown = (event: KeyboardEvent, editor: Editor, options: Options) => {
+    const position = new TablePosition(editor, options);
+
+    const { document, startBlock } = editor.value;
+    const nextPosition =
+        event.key === KEY.UP ? document.getPreviousBlock(startBlock.key) : document.getNextBlock(startBlock.key);
+
+    // we have somewhere to go
+    if (nextPosition != null) {
+        const nextPositionParentCell = document.getClosest(nextPosition.key, ofType(options.typeCell));
+
+        // and it is contained in the current cell
+        if (
+            nextPositionParentCell != null &&
+            (nextPositionParentCell === position.cell || position.cell.hasDescendant(nextPositionParentCell.key))
+        ) {
+            return editor;
+        }
+    }
+
+    // we aren't navigating within our cell
+    event.preventDefault();
+
+    if (event.key === KEY.UP && position.isFirstRow()) {
+        return moveUp(editor, options, position.table);
+    }
+
+    if (event.key === KEY.DOWN && position.isLastRow()) {
+        return moveDown(editor, options, position.table);
+    }
+
+    const direction = event.key === KEY.UP ? -1 : +1;
+    return moveTableSelectionBy(options, editor, 0, direction);
 };
 
 export default onUpDown;
