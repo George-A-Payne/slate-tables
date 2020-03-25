@@ -11,7 +11,8 @@
         "build": "babel lib --out-dir ./dist --extensions \".tsx,.ts\" --ignore \"**/*.test.ts,**/*.test.tsx,**/*.d.ts\"",
         "start": "start-storybook",
         "build-storybook": "build-storybook -c .storybook -o .out",
-        "test": "jest"
+        "test": "jest",
+        "lint": "eslint ./lib/**/*"
     },
     "jest": {
         "testMatch": [
@@ -41,9 +42,13 @@
         "@types/react-dom": "16.8.2",
         "@types/slate-html-serializer": "0.6.3",
         "@types/slate-react": "0.20.3",
+        "@typescript-eslint/eslint-plugin": "2.25.0",
+        "@typescript-eslint/parser": "2.25.0",
         "babel-jest": "24.5.0",
         "babel-loader": "8.0.6",
         "babel-plugin-module-resolver": "3.2.0",
+        "eslint": "6.8.0",
+        "eslint-plugin-react": "7.19.0",
         "immutable": "3.8.1",
         "jest": "24.5.0",
         "prettier": "1.19.1",
@@ -54,8 +59,6 @@
         "slate-html-serializer": "0.7.36",
         "slate-hyperscript": "0.11.27",
         "slate-react": "0.21.18",
-        "tslint": "5.12.1",
-        "tslint-react": "3.6.0",
         "typescript": "3.7.5"
     },
     "keywords": [
